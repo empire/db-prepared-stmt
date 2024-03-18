@@ -1,0 +1,4 @@
+Why do we have waiting time in the RIPO
+Do we need to have prepared statement?
+What will happen if proxysql switch to another DB?
+Simulate it.
