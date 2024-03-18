@@ -83,15 +83,15 @@ func ImportFixtures(db *sql.DB) error {
 
 func main() {
 	// Connect to the database
-	db, err := sql.Open("mysql", "root:password@tcp(localhost:3306)/database")
+	db, err := sql.Open("mysql", "app:pass@tcp(localhost:6033)/mydb")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer db.Close()
 
 	db.SetConnMaxLifetime(20 * time.Second)
-	db.SetMaxOpenConns(5)
-	db.SetMaxIdleConns(2)
+	db.SetMaxOpenConns(1)
+	db.SetMaxIdleConns(1)
 	// db.SetConnMaxIdleTime(time.Second * 10)
 
 	if !true {

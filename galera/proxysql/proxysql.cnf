@@ -65,15 +65,15 @@ mysql_users:
  	{
  		username = "root"
  		password = "pass"
- 		default_hostgroup = 1
+ 		default_hostgroup = 0
  		max_connections=1000
  		default_schema="information_schema"
  		active = 1
  	},
  	{
- 		username = "root2"
+ 		username = "app"
  		password = "pass"
- 		default_hostgroup = 0
+ 		default_hostgroup = 1
  		max_connections=1000
  		default_schema="information_schema"
  		active = 1
