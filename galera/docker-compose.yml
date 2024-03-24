@@ -19,6 +19,8 @@ services:
       - all
     networks:
       - mariadb
+    command: --wait_timeout=30 --interactive_timeout=600 --max_connections=50
+
   mariadb2:
     image: 'mariadb:10.7.3-focal'
     container_name: mariadb2
@@ -36,6 +38,8 @@ services:
       - all
     networks:
       - mariadb
+    command: --wait_timeout=30 --interactive_timeout=600 --max_connections=300
+
   mariadb3:
     image: 'mariadb:10.7.3-focal'
     container_name: mariadb3
@@ -53,6 +57,7 @@ services:
       - all
     networks:
       - mariadb
+    command: --wait_timeout=30 --interactive_timeout=600 --max_connections=300
 
   proxysql:
     image: 'proxysql/proxysql:latest'

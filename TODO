@@ -2,3 +2,9 @@ Why do we have waiting time in the RIPO
 Do we need to have prepared statement?
 What will happen if proxysql switch to another DB?
 Simulate it.
+
+VERIFY:
+  // If a Stmt is prepared on a DB, it will remain usable for the lifetime of the
+  // DB. When the Stmt needs to execute on a new underlying connection, it will
+  // prepare itself on the new connection automatically.
+
