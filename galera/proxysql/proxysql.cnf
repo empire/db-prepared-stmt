@@ -3,40 +3,42 @@ errorlog="/var/lib/proxysql/proxysql.log"
 admin_variables=
 {
     admin_credentials="admin:admin;radmin:radmin"
-    mysql_ifaces="0.0.0.0:6032"
-    admin-web_enabled=true
     debug=true
+    mysql_ifaces="0.0.0.0:6032"
+    web_enabled=true
 }
 
 mysql_variables=
 {
-    threads=4
-    mysql-auditlog_filename="mysql.log"
-    max_connections=1024
+    auditlog_filename="mysql.log"
+    autocommit_false_is_transaction=true
+    commands_stats=true
+    connect_retries_on_failure=10
+    connect_timeout_server=3000
+    connection_max_age_ms=10000
     default_query_delay=0
     default_query_timeout=36000000
-    have_compress=false
-    poll_timeout=2000
-    mysql-autocommit_false_is_transaction=true
-    interfaces="0.0.0.0:6033"
     default_schema="information_schema"
-    stacksize=1048576
-    server_version="8.0.0"
-    mysql-forward_autocommit=true
-    connect_timeout_server=3000
-    monitor_username="root"
-    monitor_password="pass"
-    monitor_history=600000
+    forward_autocommit=true
+    have_compress=false
+    interfaces="0.0.0.0:6033"
+    max_connections=1024
     monitor_connect_interval=60000
+    monitor_history=600000
+    monitor_password="pass"
     monitor_ping_interval=10000
     monitor_read_only_interval=1500
     monitor_read_only_timeout=500
+    monitor_username="root"
     ping_interval_server_msec=120000
     ping_timeout_server=500
-    commands_stats=true
+    poll_timeout=2000
+    server_version="8.0.0"
+    session_idle_ms=17000
     sessions_sort=true
-    connect_retries_on_failure=10
-    mysql-wait_timeout=600000
+    stacksize=1048576
+    threads=4
+    wait_timeout=60000
 }
 
  mysql_servers =
