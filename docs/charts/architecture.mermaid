@@ -1,0 +1,34 @@
+flowchart TB
+    LB[Load Balancer]
+    Client1[Client 1]
+    Client2[Client 2]
+    AS1[Application Server 1]
+    AS2[Application Server 2]
+    AS3[Application Server 3]
+    ProxySQL{{ProxySQL Cluster}}
+
+    subgraph "MariaDB Replication Cluster"
+        MasterDB[(Master DB)]
+        SlaveDB1[(Slave DB 1)]
+        SlaveDB2[(Slave DB 2)]
+        SlaveDB3[(Slave DB 3)]
+    end
+
+    LB --> AS1 & AS2 & AS3
+    Client1 --> LB
+    Client2 --> LB
+    AS1 --> ProxySQL
+    AS2 --> ProxySQL
+    AS3 --> ProxySQL
+
+    ProxySQL -.->|Write| MasterDB
+    ProxySQL -.->|Read| SlaveDB1
+    ProxySQL -.->|Read| SlaveDB2
+    ProxySQL -.->|Read| SlaveDB3
+
+    MasterDB -.->|Replicates to| SlaveDB1
+    MasterDB -.->|Replicates to| SlaveDB2
+    MasterDB -.->|Replicates to| SlaveDB3
+
+    classDef database fill:#f9f,stroke:#333,stroke-width:2px;
+    class MasterDB,SlaveDB1,SlaveDB2,SlaveDB3 database;

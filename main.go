@@ -123,6 +123,7 @@ func main() {
 
 	http.HandleFunc("/random", userhandle(pq))
 
-	log.Println("Server listening on port 7070...")
-	log.Fatal(http.ListenAndServe(":7070", nil))
+	port := "7070"
+	log.Printf("Server listening on port %s...\n", port)
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }

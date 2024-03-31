@@ -1,0 +1,13 @@
+graph TD;
+    A[Check if there is a free connection] -->|Yes| B(Reuse the connection);
+    B --> L{Connection expired?};
+
+
+    A -->|No| G(Check if maximum open connections reached);
+    G -->|Yes| H(Make a connection request and wait);
+    G -->|No| I(Open a new connection);
+    I --> N(Return the connection);
+    H -->|Received connection| L{Connection expired?};
+    L -- No --> M[Reset session if required];
+    M --> N(Return the connection);
+    L -- Yes --> O(Close connection and return error);

@@ -1,0 +1,8 @@
+graph TD;
+    C[Check if max open connections exceeded] -->|Yes| D(Close the connection);
+    C -->|No| E[Check if there is a pending request];
+    E -->|Yes| F(Satisfy the request);
+    E --> |No| I[Check if max idle connections exceeded];
+    I -->|Yes| L(Increment max idle closed);
+    I -->|No| K(Add connection to idle pool);
+    L --> D;
